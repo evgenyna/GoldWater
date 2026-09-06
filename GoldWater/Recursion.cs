@@ -41,11 +41,11 @@ namespace GoldWater
     // עצרת של מספרים האי-זוגיים
     {
         // Returns the product of all odd positive integers <= n.
-        public static long Compute(int n)
+        public static long IsOddFactorial(int n)
         {
             if (n <= 1) return 1;
-            if (n % 2 == 1) return n * Compute(n - 1);
-            return Compute(n - 1);
+            if (n % 2 == 1) return n * IsOddFactorial(n - 1);
+            return IsOddFactorial(n - 1);
         }
     }
 
@@ -68,7 +68,7 @@ namespace GoldWater
     public static class Gcd
     {
         // Returns the greatest common divisor of a and b using recursive subtraction.
-        public static int Compute(int a, int b)
+        public static int IsGCD(int a, int b)
         {
             if (a == 0 && b == 0)
                 throw new ArgumentException("gcd(0,0) is undefined");
@@ -77,8 +77,8 @@ namespace GoldWater
             if (a == 0) return b;
             if (b == 0) return a;
             if (a == b) return a;
-            if (a > b) return Compute(a - b, b);
-            return Compute(a, b - a);
+            if (a > b) return IsGCD(a - b, b);
+            return IsGCD(a, b - a);
         }
     }
 
@@ -110,13 +110,18 @@ namespace GoldWater
         }
     }
 
-
-
     internal class Program
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine(Hadadi.IsEven(5));
+            Console.WriteLine(Hadadi.IsEven(6));
+            Console.WriteLine(Mod.Modulo(101, 3));
+            Console.WriteLine(OddFactorial.IsOddFactorial(10));
+            Console.WriteLine(Div.IsDiv(6, 3));
+            Console.WriteLine(Gcd.IsGCD(106, 24));
+            Console.WriteLine(Length.IntLength(12345));
+            Console.WriteLine(Exists.IsExists(12345, 3));
         }
     }
 }
+
