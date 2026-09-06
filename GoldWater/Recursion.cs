@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace GoldWater
 {
@@ -66,7 +66,6 @@ namespace GoldWater
     }
 
     public static class Gcd
-    // מציאת המחלק המשותף הגדול ביותר של שני מספרים טבעיים
     {
         // Returns the greatest common divisor of a and b using recursive subtraction.
         public static int Compute(int a, int b)
@@ -84,7 +83,6 @@ namespace GoldWater
     }
 
     public static class Length
-    // חישוב מספר הספרות במספר שלם
     {
         // Returns the number of digits in num using recursion.
         public static int IntLength(long num)
@@ -97,7 +95,6 @@ namespace GoldWater
     }
 
     public static class Exists
-    // בדיקה האם ספרה מופיעה במספר
     {
         // Returns true if digit d exists in num using recursion.
         public static bool IsExists(long num, int d)
@@ -113,26 +110,6 @@ namespace GoldWater
         }
     }
 
-    public static class Dec2Bin
-    // העברה מספר טבעי מייצוג עשרוני לייצוג בינארי
-    {
-        // Converts a decimal integer to its binary representation using recursion.
-        public static string DecToBin(int n)
-        {
-            if (n == 0) return "0";
-            bool neg = n < 0;
-            long num = Math.Abs((long)n);
-            string bin = ToBin(num);
-            return neg ? "-" + bin : bin;
-        }
-
-        private static string ToBin(long n)
-        {
-            if (n == 0) return "";
-            return ToBin(n / 2) + (n % 2).ToString();
-        }
-    }
-
 
 
     internal class Program
@@ -143,4 +120,3 @@ namespace GoldWater
         }
     }
 }
-
