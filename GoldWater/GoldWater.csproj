@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Unit4">
+      <HintPath>..\..\..\..\Downloads\Unit4.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

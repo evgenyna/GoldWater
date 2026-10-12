@@ -109,18 +109,74 @@ namespace GoldWater
                 IsExists(num / 10, d);
         }
     }
+    public static class Factorial
+    {
+        // Returns n! (factorial) using recursion.
+        public static long Fact(int n)
+        {
+            if (n < 0) throw new ArgumentOutOfRangeException(nameof(n), "n must be non-negative");
+            if (n <= 1) return 1;
+            return n * Fact(n - 1);
+        }
+    }
 
-    internal class Program
+   
+    public class PrintRec3
+        {
+
+            public static void PrintSeries3(int n)
+            {
+
+                if (n == 4)
+                {
+
+                    Console.Write(n + "," + n);
+                }
+                else
+                {
+                    Console.Write(n + "," + n + ",");
+                    PrintSeries3(n + 1);
+                    Console.Write("," + n + "," + n);
+
+                }
+            }
+        }
+    public class PrintRec2
+    {
+        public static void PrintSeries2(int n)
+        {
+
+            if (n == 1)
+            {
+                Console.WriteLine("-" + n);
+            }
+            else
+            {
+                Console.Write((-n) + " ");
+                PrintSeries2(n - 1);
+
+            }
+        }
+    }
+
+        internal class Program
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine(Hadadi.IsEven(6));
-            Console.WriteLine(Mod.Modulo(101, 3));
-            Console.WriteLine(OddFactorial.IsOddFactorial(10));
-            Console.WriteLine(Div.IsDiv(6, 3));
-            Console.WriteLine(Gcd.IsGCD(106, 24));
-            Console.WriteLine(Length.IntLength(12345));
-            Console.WriteLine(Exists.IsExists(12345, 3));
+                //Console.WriteLine(Hadadi.IsEven(6));
+                //Console.WriteLine(Mod.Modulo(101, 3));
+                //Console.WriteLine(OddFactorial.IsOddFactorial(10));
+                //Console.WriteLine(Div.IsDiv(6, 3));
+                //Console.WriteLine(Gcd.IsGCD(106, 24));
+                //Console.WriteLine(Length.IntLength(12345));
+                //Console.WriteLine(Exists.IsExists(12345, 3));
+                //Console.WriteLine(Factorial.Fact(6));
+                //PrintRec2.PrintSeries2(10);
+                //PrintRec3.PrintSeries3(1);
+
+                // הרצה של תרגילי שרשרת חוליות
+                // Run linked list exercises
+                Linked_Lists.RunExercises();
         }
     }
 }
