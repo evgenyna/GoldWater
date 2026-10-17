@@ -5,9 +5,11 @@ using System.Text;
 namespace GoldWater
 {
     /// <summary>
-    /// מחלקת שירות לטיפול בשרשרת חוליות (רשימה) - פתרונות לדף התרגול של הילה קדמן
-    /// הערה: פעולות שעלולות לשנות את ראש הרשימה (מחיקה, הכנסה ממויינת, שרשור)
-    /// מחזירות את ראש הרשימה החדש, וצריך לקלוט אותו: lst = ListInt.Delete(lst, 5);
+    /// מחלקת שירות לטיפול בשרשרת חוליות
+    /// פתרונות לדף תרגול מספר 1
+    /// פעולות שעלולות לשנות את ראש הרשימה מחזירות את הראש החדש
+    /// ויש לקלוט את הערך המוחזר, לדוגמה
+    /// lst = ListInt.Delete(lst, 5);
     /// </summary>
     public class ListInt
     {
@@ -17,7 +19,8 @@ namespace GoldWater
         //                        בנייה והצגת רשימה
         // =====================================================================
 
-        // תרגיל 1 - בנייה מקלט של המשתמש (לפחות 10 איברים)
+        // תרגיל 1
+        // בניית רשימה מקלט של המשתמש, לפחות 10 איברים
         public static Node<int> Build()
         {
             int len;
@@ -42,26 +45,30 @@ namespace GoldWater
             return first;
         }
 
-        // תרגיל 2 - בנייה של len מספרים אקראיים בין from ל-to (כולל)
-        // לדוגמה: Build(12, 5, 20)
+        // תרגיל 2
+        // בניית רשימה של מספרים אקראיים בטווח הנתון כולל הקצוות
+        // Example: Build(12, 5, 20)
         public static Node<int> Build(int len, int from, int to)
         {
             Node<int> first = null;
             for (int i = 0; i < len; i++)
-                first = new Node<int>(rnd.Next(from, to + 1), first); // הוספה בראש - הסדר אקראי ממילא
+                first = new Node<int>(rnd.Next(from, to + 1), first); // הוספה בראש הרשימה
             return first;
         }
 
-        // תרגיל 3 - בנייה ממערך, באותו סדר
+        // תרגיל 3
+        // בניית רשימה ממערך, באותו סדר
         public static Node<int> Build(int[] arr)
         {
             Node<int> first = null;
-            for (int i = arr.Length - 1; i >= 0; i--)   // מהסוף להתחלה + הוספה בראש = אותו סדר
+            for (int i = arr.Length - 1; i >= 0; i--)   // מעבר מהסוף להתחלה והוספה בראש
                 first = new Node<int>(arr[i], first);
             return first;
         }
 
-        // תרגיל 4 - הצגה בפורמט [x0, x1, ..., xn]
+        // תרגיל 4
+        // הצגת הרשימה
+        // Format: [x0, x1, ..., xn]
         public static void Show(Node<int> lst)
         {
             Console.WriteLine(ToStr(lst));
@@ -88,13 +95,17 @@ namespace GoldWater
         //                        חיפוש ועדכון ברשימה
         // =====================================================================
 
-        // תרגיל 6 - האם x קיים ברשימה. סיבוכיות: O(n)
+        // תרגיל 6
+        // האם המספר קיים ברשימה
+        // Complexity: O(n)
         public static bool Exist(Node<int> lst, int x)
         {
             return GetPosition(lst, x) != null;
         }
 
-        // תרגיל 7 - הפניה לחוליה הראשונה שערכה x, או null. סיבוכיות: O(n)
+        // תרגיל 7
+        // מחזירה הפניה לחוליה הראשונה שמכילה את המספר, או ריק אם אין כזו
+        // Complexity: O(n)
         public static Node<int> GetPosition(Node<int> lst, int x)
         {
             Node<int> pos = lst;
@@ -103,7 +114,9 @@ namespace GoldWater
             return pos;
         }
 
-        // תרגיל 8 - עדכון המופע הראשון של x להיות y. סיבוכיות: O(n)
+        // תרגיל 8
+        // עדכון המופע הראשון של המספר לערך החדש
+        // Complexity: O(n)
         public static void Update(Node<int> lst, int x, int y)
         {
             Node<int> pos = GetPosition(lst, x);
@@ -111,7 +124,9 @@ namespace GoldWater
                 pos.SetValue(y);
         }
 
-        // תרגיל 9 - הפניה לאיבר המקסימלי (הראשון מביניהם). סיבוכיות: O(n)
+        // תרגיל 9
+        // מחזירה הפניה לאיבר המקסימלי, הראשון מביניהם אם יש כמה
+        // Complexity: O(n)
         public static Node<int> GetMax(Node<int> lst)
         {
             if (lst == null)
@@ -120,15 +135,17 @@ namespace GoldWater
             Node<int> pos = lst.GetNext();
             while (pos != null)
             {
-                if (pos.GetValue() > max.GetValue())   // > ולא >= כדי לשמור על הראשון
+                if (pos.GetValue() > max.GetValue())   // גדול ממש, כדי לשמור על הראשון
                     max = pos;
                 pos = pos.GetNext();
             }
             return max;
         }
 
-        // תרגיל 10א - אורך רשימה
-        // 10ב - סיבוכיות: O(n), עוברים פעם אחת על כל n האיברים
+        // תרגיל 10
+        // אורך הרשימה
+        // סיבוכיות לינארית, עוברים פעם אחת על כל האיברים
+        // Complexity: O(n)
         public static int Length(Node<int> lst)
         {
             int count = 0;
@@ -140,8 +157,11 @@ namespace GoldWater
             return count;
         }
 
-        // תרגיל 10א - החלפת האיבר במקום p עם העוקב לו. אם אין עוקב - לא קורה דבר
-        // 10ב - סיבוכיות: O(1), מספר קבוע של פעולות שאינו תלוי באורך הרשימה
+        // תרגיל 10
+        // החלפת הערך בחוליה הנתונה עם הערך בחוליה העוקבת לה
+        // אם אין חוליה עוקבת, לא קורה דבר
+        // מספר קבוע של פעולות שאינו תלוי באורך הרשימה
+        // Complexity: O(1)
         public static void Swap(Node<int> lst, Node<int> p)
         {
             if (p == null || !p.HasNext())
@@ -156,8 +176,11 @@ namespace GoldWater
         //                           מחיקה ברשימה
         // =====================================================================
 
-        // תרגיל 11 - מחיקת המופע הראשון של x. מחזירה את ראש הרשימה (אולי השתנה)
-        // סיבוכיות: O(n) - במקרה הגרוע עוברים על כל הרשימה
+        // תרגיל 11
+        // מחיקת המופע הראשון של המספר
+        // מחזירה את ראש הרשימה, שאולי השתנה
+        // במקרה הגרוע עוברים על כל הרשימה
+        // Complexity: O(n)
         public static Node<int> Delete(Node<int> lst, int x)
         {
             if (lst == null)
@@ -168,13 +191,15 @@ namespace GoldWater
             Node<int> prev = lst;
             while (prev.HasNext() && prev.GetNext().GetValue() != x)
                 prev = prev.GetNext();
-            if (prev.HasNext())               // נמצא - מדלגים על החוליה
+            if (prev.HasNext())               // נמצא, מדלגים על החוליה
                 prev.SetNext(prev.GetNext().GetNext());
             return lst;
         }
 
-        // תרגיל 12 - מחיקת כל המופעים של x. מחזירה את ראש הרשימה
-        // סיבוכיות: O(n) - מעבר אחד על הרשימה
+        // תרגיל 12
+        // מחיקת כל המופעים של המספר
+        // מחזירה את ראש הרשימה, שאולי השתנה
+        // Complexity: O(n)
         public static Node<int> DelX(Node<int> lst, int x)
         {
             while (lst != null && lst.GetValue() == x)   // מחיקה מהראש כל עוד צריך
@@ -186,16 +211,19 @@ namespace GoldWater
             while (prev.HasNext())
             {
                 if (prev.GetNext().GetValue() == x)
-                    prev.SetNext(prev.GetNext().GetNext()); // לא מתקדמים - אולי גם הבא למחיקה
+                    prev.SetNext(prev.GetNext().GetNext()); // לא מתקדמים, אולי גם הבא למחיקה
                 else
                     prev = prev.GetNext();
             }
             return lst;
         }
 
-        // תרגיל 14 - צמצום רצפים: [2,3,3,3,4,5,5,2,2,2,7,3,3] -> [2,3,4,5,2,7,3]
-        // הראש לעולם לא נמחק, לכן אין צורך להחזיר אותו
-        // סיבוכיות: O(n) - מעבר אחד, כל איבר נבדק מול העוקב שלו
+        // תרגיל 14
+        // צמצום רצפים של מספרים זהים למופע אחד
+        // ראש הרשימה לעולם לא נמחק, לכן אין צורך להחזיר אותו
+        // כל איבר נבדק מול העוקב שלו במעבר אחד
+        // Example: [2,3,3,3,4,5,5,2,2,2,7,3,3] -> [2,3,4,5,2,7,3]
+        // Complexity: O(n)
         public static void Compress(Node<int> lst)
         {
             Node<int> pos = lst;
@@ -208,15 +236,17 @@ namespace GoldWater
             }
         }
 
-        // תרגיל 15 - השארת המופע הראשון בלבד של כל ערך
-        // [3,6,2,9,2,6,5,3,2,5] -> [3,6,2,9,5]
-        // סיבוכיות: O(n^2) - עבור כל איבר מבצעים DelX על המשך הרשימה, O(n) כל אחד
+        // תרגיל 15
+        // השארת המופע הראשון בלבד של כל ערך
+        // עבור כל איבר מוחקים את הערך שלו מכל המשך הרשימה
+        // Example: [3,6,2,9,2,6,5,3,2,5] -> [3,6,2,9,5]
+        // Complexity: O(n^2)
         public static void NoRepeat(Node<int> lst)
         {
             Node<int> pos = lst;
             while (pos != null)
             {
-                // מוחקים את הערך הנוכחי מכל המשך הרשימה (אחריו)
+                // מוחקים את הערך הנוכחי מכל החוליות שאחריו
                 pos.SetNext(DelX(pos.GetNext(), pos.GetValue()));
                 pos = pos.GetNext();
             }
@@ -226,7 +256,9 @@ namespace GoldWater
         //                           שרשור רשימות
         // =====================================================================
 
-        // פעולת עזר - העתקה של רשימה (חוליות חדשות). O(n)
+        // פעולת עזר
+        // העתקת רשימה לחוליות חדשות
+        // Complexity: O(n)
         public static Node<int> Copy(Node<int> lst)
         {
             Node<int> dummy = new Node<int>(0);   // חוליית דמה שמקלה על הבנייה
@@ -240,7 +272,9 @@ namespace GoldWater
             return dummy.GetNext();
         }
 
-        // פעולת עזר - החוליה האחרונה ברשימה. O(n)
+        // פעולת עזר
+        // מחזירה את החוליה האחרונה ברשימה
+        // Complexity: O(n)
         public static Node<int> GetLast(Node<int> lst)
         {
             if (lst == null)
@@ -250,7 +284,9 @@ namespace GoldWater
             return lst;
         }
 
-        // תרגיל 20 - רשימה שלישית חדשה, שתי הרשימות ללא שינוי. O(n+m)
+        // תרגיל 20
+        // שרשור לרשימה שלישית חדשה, שתי הרשימות נשארות ללא שינוי
+        // Complexity: O(n+m)
         public static Node<int> ConcatNew(Node<int> lst1, Node<int> lst2)
         {
             Node<int> copy1 = Copy(lst1);
@@ -261,21 +297,26 @@ namespace GoldWater
             return copy1;
         }
 
-        // תרגיל 21 (שרשור) - הראשונה מכילה הכל, השנייה ללא שינוי.
-        // מחזירה את ראש הרשימה הראשונה (אם היא הייתה ריקה - הראש משתנה). O(n+m)
+        // תרגיל 21 בשרשור
+        // הרשימה הראשונה מכילה את הכל, השנייה נשארת ללא שינוי
+        // מחזירה את ראש הרשימה הראשונה, שמשתנה אם היא הייתה ריקה
+        // Complexity: O(n+m)
         public static Node<int> ConcatToFirst(Node<int> lst1, Node<int> lst2)
         {
-            Node<int> copy2 = Copy(lst2);       // העתק - כדי שהשנייה לא תשותף ולא תשתנה
+            Node<int> copy2 = Copy(lst2);       // העתק, כדי שהרשימה השנייה לא תשותף ולא תשתנה
             if (lst1 == null)
                 return copy2;
             GetLast(lst1).SetNext(copy2);
             return lst1;
         }
 
-        // תרגיל 22 (שרשור) - הראשונה מכילה הכל, השנייה ריקה.
-        // לא יוצרים חוליות חדשות: מחברים את החוליות של השנייה לסוף הראשונה,
-        // ו-lst2 של הקורא מתאפס (ref) - כך הרשימה השנייה ריקה.
-        // סיבוכיות: O(n) - רק מעבר עד סוף הרשימה הראשונה
+        // תרגיל 22 בשרשור
+        // הרשימה הראשונה מכילה את הכל, והשנייה נשארת ריקה
+        // לא יוצרים חוליות חדשות, אלא מחברים את החוליות של השנייה לסוף הראשונה
+        // המשתנה של הרשימה השנייה אצל הקורא מתאפס בעזרת פרמטר הפניה
+        // רק מעבר אחד עד סוף הרשימה הראשונה
+        // Usage: lst1 = ListInt.ConcatMove(lst1, ref lst2);
+        // Complexity: O(n)
         public static Node<int> ConcatMove(Node<int> lst1, ref Node<int> lst2)
         {
             Node<int> result;
@@ -291,13 +332,16 @@ namespace GoldWater
         }
 
         // =====================================================================
-        //                          רשימות ממויינות
+        //                          רשימות ממוינות
         // =====================================================================
 
-        // תרגיל 21א - הכנסה ממויינת (סדר עולה). מחזירה את ראש הרשימה. O(n)
+        // תרגיל 21 סעיף א
+        // הכנסה ממוינת בסדר עולה
+        // מחזירה את ראש הרשימה, שאולי השתנה
+        // Complexity: O(n)
         public static Node<int> InsertSorted(Node<int> lst, int x)
         {
-            if (lst == null || x <= lst.GetValue())    // הכנסה בראש
+            if (lst == null || x <= lst.GetValue())    // הכנסה בראש הרשימה
                 return new Node<int>(x, lst);
 
             Node<int> prev = lst;
@@ -307,7 +351,9 @@ namespace GoldWater
             return lst;
         }
 
-        // תרגיל 21א - בניית רשימה ממויינת ממערך. O(n^2)
+        // תרגיל 21 סעיף א
+        // בניית רשימה ממוינת ממערך
+        // Complexity: O(n^2)
         public static Node<int> BuildSorted(int[] arr)
         {
             Node<int> lst = null;
@@ -316,7 +362,9 @@ namespace GoldWater
             return lst;
         }
 
-        // תרגיל 21א - בניית רשימה ממויינת ממספרים אקראיים. O(n^2)
+        // תרגיל 21 סעיף א
+        // בניית רשימה ממוינת ממספרים אקראיים
+        // Complexity: O(n^2)
         public static Node<int> BuildSorted(int len, int from, int to)
         {
             Node<int> lst = null;
@@ -325,9 +373,12 @@ namespace GoldWater
             return lst;
         }
 
-        // תרגיל 21ב - רשימת מחרוזות.
-        // השינויים: הטיפוס הופך מ-Node<int> ל-Node<string>,
-        // וההשוואה (< , <=) מוחלפת ב-CompareTo, כי אין אופרטור < על מחרוזות.
+        // תרגיל 21 סעיף ב
+        // רשימה של מחרוזות
+        // השינוי הראשון הוא בטיפוס של החוליות
+        // השינוי השני הוא בהשוואה, כי אין אופרטור קטן מ על מחרוזות
+        // int  ->  string
+        // a < b  ->  a.CompareTo(b) < 0
         public static Node<string> InsertSorted(Node<string> lst, string s)
         {
             if (lst == null || s.CompareTo(lst.GetValue()) <= 0)
@@ -364,11 +415,13 @@ namespace GoldWater
             return str;
         }
 
-        // תרגיל 22א - האם הרשימה ממויינת בסדר עולה. O(n)
+        // תרגיל 22 סעיף א
+        // האם הרשימה ממוינת בסדר עולה
+        // Complexity: O(n)
         public static bool IsSorted(Node<int> lst)
         {
             if (lst == null)
-                return true;                       // רשימה ריקה - ממויינת
+                return true;                       // רשימה ריקה נחשבת ממוינת
             while (lst.HasNext())
             {
                 if (lst.GetValue() > lst.GetNext().GetValue())
@@ -378,7 +431,9 @@ namespace GoldWater
             return true;                           // כולל רשימה בת איבר אחד
         }
 
-        // תרגיל 22ב - אותו דבר למחרוזות: Node<string> והשוואה בעזרת CompareTo
+        // תרגיל 22 סעיף ב
+        // אותו דבר עבור מחרוזות, עם השוואה בעזרת הפעולה המתאימה
+        // a > b  ->  a.CompareTo(b) > 0
         public static bool IsSorted(Node<string> lst)
         {
             if (lst == null)
@@ -396,7 +451,9 @@ namespace GoldWater
         //                           מיזוג רשימות
         // =====================================================================
 
-        // תרגיל 23א - איחוד ממויין עם חזרות (רשימה חדשה). O(n+m)
+        // תרגיל 23 סעיף א
+        // איחוד ממוין עם חזרות, לרשימה חדשה
+        // Complexity: O(n+m)
         public static Node<int> MergeWithDup(Node<int> lst1, Node<int> lst2)
         {
             Node<int> dummy = new Node<int>(0);
@@ -415,12 +472,14 @@ namespace GoldWater
                 }
                 last = last.GetNext();
             }
-            // העתקת השארית (רק אחת מהן לא ריקה)
+            // העתקת השארית, רק אחת מהרשימות עוד לא נגמרה
             last.SetNext(lst1 != null ? Copy(lst1) : Copy(lst2));
             return dummy.GetNext();
         }
 
-        // תרגיל 23ב - איחוד ממויין ללא חזרות (רשימה חדשה). O(n+m)
+        // תרגיל 23 סעיף ב
+        // איחוד ממוין ללא חזרות, לרשימה חדשה
+        // Complexity: O(n+m)
         public static Node<int> MergeNoDup(Node<int> lst1, Node<int> lst2)
         {
             Node<int> dummy = new Node<int>(0);
@@ -438,7 +497,7 @@ namespace GoldWater
                     last.SetNext(new Node<int>(b));
                     lst2 = lst2.GetNext();
                 }
-                else                                // שווים - מכניסים פעם אחת ומתקדמים בשתיהן
+                else                                // שווים, מכניסים פעם אחת ומתקדמים בשתיהן
                 {
                     last.SetNext(new Node<int>(a));
                     lst1 = lst1.GetNext();
@@ -450,7 +509,9 @@ namespace GoldWater
             return dummy.GetNext();
         }
 
-        // תרגיל 24 - חיתוך של שתי רשימות ממויינות (רשימה חדשה). O(n+m)
+        // תרגיל 24
+        // חיתוך של שתי רשימות ממוינות, לרשימה חדשה
+        // Complexity: O(n+m)
         public static Node<int> Intersect(Node<int> lst1, Node<int> lst2)
         {
             Node<int> dummy = new Node<int>(0);
@@ -473,8 +534,10 @@ namespace GoldWater
             return dummy.GetNext();
         }
 
-        // תרגיל 25 - איחוד של שתי רשימות לא ממויינות, ללא חזרות (רשימה חדשה)
-        // סיבוכיות: O(n*m) - לכל איבר של lst2 בודקים קיום ב-lst1
+        // תרגיל 25
+        // איחוד של שתי רשימות לא ממוינות ללא חזרות, לרשימה חדשה
+        // לכל איבר של הרשימה השנייה בודקים אם הוא קיים בראשונה
+        // Complexity: O(n*m)
         public static Node<int> UnionUnsorted(Node<int> lst1, Node<int> lst2)
         {
             Node<int> result = Copy(lst1);
@@ -499,13 +562,19 @@ namespace GoldWater
         // =====================================================================
         //                                רצפים
         // =====================================================================
-        // תרגיל 26: רצפים של מספרים חיוביים, כל רצף מסתיים במספר שלילי.
-        // המספר השלילי מסמן את סוף הרצף ואינו נספר בו.
-        // עבור [2,5,1,7,-4,6,-1,12,3,9,11,4,7,-2,11,-2]:
-        // אורכים [4,1,6,1] (בדף כתוב 5 בראשון - נראה כטעות הקלדה), סכומים [15,6,46,11]
-        // כל הפעולות בסעיפים א-ד: O(n), מעבר אחד על הרשימה.
+        // תרגיל 26
+        // רצפים של מספרים חיוביים, וכל רצף מסתיים במספר שלילי
+        // המספר השלילי מסמן את סוף הרצף ואינו נספר בו
+        // בדף כתוב שאורך הרצף הראשון הוא 5, אבל יש בו 4 איברים
+        // כנראה טעות הקלדה בדף
+        // List:    [2,5,1,7,-4,6,-1,12,3,9,11,4,7,-2,11,-2]
+        // Lengths: [4,1,6,1]
+        // Sums:    [15,6,46,11]
+        // כל הפעולות בסעיפים א עד ד עוברות פעם אחת על הרשימה
+        // Complexity: O(n)
 
-        // 26א - מספר הרצפים = מספר המספרים השליליים
+        // תרגיל 26 סעיף א
+        // מספר הרצפים שווה למספר המספרים השליליים
         public static int CountSeq(Node<int> lst)
         {
             int count = 0;
@@ -518,7 +587,8 @@ namespace GoldWater
             return count;
         }
 
-        // 26ב - אורך הרצף הארוך ביותר
+        // תרגיל 26 סעיף ב
+        // אורך הרצף הארוך ביותר
         public static int MaxSeqLength(Node<int> lst)
         {
             int max = 0, len = 0;
@@ -537,7 +607,8 @@ namespace GoldWater
             return max;
         }
 
-        // 26ג - רשימת אורכי הרצפים
+        // תרגיל 26 סעיף ג
+        // רשימת אורכי הרצפים
         public static Node<int> SeqLengths(Node<int> lst)
         {
             Node<int> dummy = new Node<int>(0);
@@ -558,7 +629,8 @@ namespace GoldWater
             return dummy.GetNext();
         }
 
-        // 26ד - רשימת סכומי הרצפים
+        // תרגיל 26 סעיף ד
+        // רשימת סכומי הרצפים
         public static Node<int> SeqSums(Node<int> lst)
         {
             Node<int> dummy = new Node<int>(0);
@@ -579,8 +651,11 @@ namespace GoldWater
             return dummy.GetNext();
         }
 
-        // תרגיל 27 - אורך הרצף העולה (ממש) הארוך ביותר. O(n)
-        // [2,5,7,8,-3,-1,0,2,4,6,5,5,6,7,12] -> 6  (הרצף -3,-1,0,2,4,6)
+        // תרגיל 27
+        // אורך הרצף העולה ממש הארוך ביותר
+        // Example: [2,5,7,8,-3,-1,0,2,4,6,5,5,6,7,12] -> 6
+        // The sequence is: -3,-1,0,2,4,6
+        // Complexity: O(n)
         public static int MaxAscendingLength(Node<int> lst)
         {
             if (lst == null)
@@ -599,10 +674,13 @@ namespace GoldWater
             return max;
         }
 
-        // תרגיל 26 (השני) א - רשימת-המספרים-העוקבים-המקסימלית (רשימה חדשה)
-        // [3,5,6,7,8,-1,0,1,2,3,4,6,7,13,1,2] -> [-1,0,1,2,3,4]
-        // 26ב - סיבוכיות: O(n). מעבר אחד למציאת תחילת הרצף ואורכו,
-        // ועוד מעבר על הרצף עצמו (לכל היותר n) להעתקתו. O(n)+O(n)=O(n)
+        // תרגיל 26 השני סעיף א
+        // רשימת המספרים העוקבים הארוכה ביותר, כרשימה חדשה
+        // Example: [3,5,6,7,8,-1,0,1,2,3,4,6,7,13,1,2] -> [-1,0,1,2,3,4]
+        // תרגיל 26 השני סעיף ב
+        // מעבר אחד למציאת תחילת הרצף ואורכו
+        // ועוד מעבר על הרצף עצמו כדי להעתיק אותו
+        // Complexity: O(n) + O(n) = O(n)
         public static Node<int> MaxConsecutive(Node<int> lst)
         {
             if (lst == null)
@@ -628,7 +706,7 @@ namespace GoldWater
                 pos = pos.GetNext();
             }
 
-            // העתקת הרצף הטוב ביותר לרשימה חדשה
+            // העתקת הרצף הארוך ביותר לרשימה חדשה
             Node<int> dummy = new Node<int>(0);
             Node<int> last = dummy;
             for (int i = 0; i < bestLen; i++)
@@ -640,9 +718,11 @@ namespace GoldWater
             return dummy.GetNext();
         }
 
-        // תרגיל 27 (השני) - רשימת תווים, כל מילה מסתיימת ב-'*'.
-        // מחזירה הפניה לתחילת המילה הארוכה ביותר (הראשונה אם יש כמה). O(n)
-        // לדוגמה: a b * a b c * a *  -> הפניה ל-a של "abc*"
+        // תרגיל 27 השני
+        // רשימת תווים שבה כל מילה מסתיימת בכוכבית
+        // מחזירה הפניה לתחילת המילה הארוכה ביותר, הראשונה אם יש כמה
+        // Example: a b * a b c * a *  ->  points to the 'a' of "abc*"
+        // Complexity: O(n)
         public static Node<char> LongestWord(Node<char> lst)
         {
             Node<char> best = null, start = lst;
@@ -650,7 +730,7 @@ namespace GoldWater
             Node<char> pos = lst;
             while (pos != null)
             {
-                len++;                                 // סופרים כולל הכוכבית
+                len++;                                 // סופרים גם את הכוכבית
                 if (pos.GetValue() == '*')
                 {
                     if (len > bestLen)
@@ -696,22 +776,27 @@ namespace GoldWater
         //                          תת רשימות
         // =====================================================================
 
-        // תרגיל 28 - האם lst1 היא תת-רשימה של lst2 (אותו סדר, לא חייב ברצף)
-        // יעילות: O(m) כאשר m אורך lst2 - כל אחד מהמצביעים מתקדם רק קדימה,
-        // ו-lst2 נסרקת לכל היותר פעם אחת.
+        // תרגיל 28
+        // האם הרשימה הראשונה היא תת רשימה של השנייה
+        // כלומר כל איבריה מופיעים בשנייה באותו סדר, לא בהכרח ברצף
+        // כל אחד משני המצביעים מתקדם רק קדימה
+        // ולכן הרשימה השנייה נסרקת לכל היותר פעם אחת
+        // m = length of lst2
+        // Complexity: O(m)
         public static bool IsSubList(Node<int> lst1, Node<int> lst2)
         {
             Node<int> p1 = lst1, p2 = lst2;
             while (p1 != null && p2 != null)
             {
                 if (p1.GetValue() == p2.GetValue())
-                    p1 = p1.GetNext();               // נמצא - עוברים לאיבר הבא שמחפשים
+                    p1 = p1.GetNext();               // נמצא, עוברים לאיבר הבא שמחפשים
                 p2 = p2.GetNext();
             }
-            return p1 == null;                      // כל איברי lst1 נמצאו
+            return p1 == null;                      // כל האיברים של הרשימה הראשונה נמצאו
         }
 
-        // פעולת עזר: האם lst1 מופיעה ברצף החל מהחוליה start ב-lst2
+        // פעולת עזר
+        // האם הרשימה מופיעה ברצף החל מהחוליה הנתונה
         private static bool StartsWith(Node<int> start, Node<int> lst1)
         {
             while (lst1 != null && start != null && lst1.GetValue() == start.GetValue())
@@ -722,8 +807,11 @@ namespace GoldWater
             return lst1 == null;
         }
 
-        // תרגיל 29 - האם lst1 היא תת-רשימה-מוכלת (ברצף) של lst2
-        // יעילות: O(n*m) - לכל אחת מ-m נקודות ההתחלה ב-lst2 משווים עד n איברים של lst1
+        // תרגיל 29
+        // האם הרשימה הראשונה מוכלת ברצף בתוך השנייה
+        // לכל נקודת התחלה ברשימה השנייה משווים את כל איברי הראשונה
+        // n = length of lst1, m = length of lst2
+        // Complexity: O(n*m)
         public static bool IsIncludedList(Node<int> lst1, Node<int> lst2)
         {
             if (lst1 == null)
@@ -738,8 +826,12 @@ namespace GoldWater
             return false;
         }
 
-        // תרגיל 30 - האם lst1 מכילה את lst2: כל איבר של lst2 קיים ב-lst1 (הסדר לא חשוב)
-        // יעילות: O(n*m) - לכל אחד מ-m איברי lst2 מבצעים Exist על lst1 באורך n
+        // תרגיל 30
+        // האם הרשימה הראשונה מכילה את השנייה
+        // כלומר כל איבר של השנייה קיים בראשונה, והסדר לא חשוב
+        // לכל איבר של השנייה מחפשים אותו בכל הראשונה
+        // n = length of lst1, m = length of lst2
+        // Complexity: O(n*m)
         public static bool IsListContains(Node<int> lst1, Node<int> lst2)
         {
             while (lst2 != null)
