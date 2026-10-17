@@ -159,25 +159,25 @@ namespace GoldWater
         }
     }
 
-        internal class Program
-    {
-        private static void Main(string[] args)
-        {
-                //Console.WriteLine(Hadadi.IsEven(6));
-                //Console.WriteLine(Mod.Modulo(101, 3));
-                //Console.WriteLine(OddFactorial.IsOddFactorial(10));
-                //Console.WriteLine(Div.IsDiv(6, 3));
-                //Console.WriteLine(Gcd.IsGCD(106, 24));
-                //Console.WriteLine(Length.IntLength(12345));
-                //Console.WriteLine(Exists.IsExists(12345, 3));
-                //Console.WriteLine(Factorial.Fact(6));
-                //PrintRec2.PrintSeries2(10);
-                //PrintRec3.PrintSeries3(1);
+    //    internal class Program
+    //{
+    //    private static void Main(string[] args)
+    //    {
+    //            //Console.WriteLine(Hadadi.IsEven(6));
+    //            //Console.WriteLine(Mod.Modulo(101, 3));
+    //            //Console.WriteLine(OddFactorial.IsOddFactorial(10));
+    //            //Console.WriteLine(Div.IsDiv(6, 3));
+    //            //Console.WriteLine(Gcd.IsGCD(106, 24));
+    //            //Console.WriteLine(Length.IntLength(12345));
+    //            //Console.WriteLine(Exists.IsExists(12345, 3));
+    //            //Console.WriteLine(Factorial.Fact(6));
+    //            //PrintRec2.PrintSeries2(10);
+    //            //PrintRec3.PrintSeries3(1);
 
-                // הרצה של תרגילי שרשרת חוליות
-                // Run linked list exercises
-                Linked_Lists.RunExercises();
-        }
-    }
+    //            // הרצה של תרגילי שרשרת חוליות
+    //            // Run linked list exercises
+    //            Linked_Lists.RunExercises();
+    //    }
+    //}
 }
 
