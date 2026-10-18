@@ -2,6 +2,9 @@ using System;
 using Unit4.CollectionsLib;
 using System.Text;
 using static GoldWater.ListInt;
+using static GoldWater.ListInt2;
+using static GoldWater.ListSedarot;
+
 namespace GoldWater
 {
     internal class Program
@@ -27,6 +30,15 @@ namespace GoldWater
             //ExSequences();
             ExSubLists();
             //Console.ReadLine();
+            Test();
+
+            // בניית הרשימה מהדוגמה: 7, 2, 4, 8, 20, 18, 19, 20, 20, 5, -3, 0, 9
+            int[] arr = { 7, 2, 4, 8, 20, 18, 19, 20, 20, 5, -3, 0, 9 };
+            Node<int> list = ListInt.Build(arr);
+            Node<int> result = Sedarot(list);
+            Title("Sedarot");
+            Console.WriteLine("Sidra: " + ListInt.ToStr(list));
+            Console.WriteLine("Sedarot result: " + ListInt.ToStr(result));
         }
 
         static void Title(string s)
