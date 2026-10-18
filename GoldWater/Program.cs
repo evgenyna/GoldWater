@@ -4,6 +4,7 @@ using System.Text;
 using static GoldWater.ListInt;
 using static GoldWater.ListInt2;
 using static GoldWater.ListSedarot;
+using static GoldWater.ListTriple;
 
 namespace GoldWater
 {
@@ -39,6 +40,8 @@ namespace GoldWater
             Title("Sedarot");
             Console.WriteLine("Sidra: " + ListInt.ToStr(list));
             Console.WriteLine("Sedarot result: " + ListInt.ToStr(result));
+
+            TestTripleChain();
         }
 
         static void Title(string s)
@@ -263,6 +266,36 @@ namespace GoldWater
             Console.Write("l4: "); Show(l4);
             Console.Write("l1: "); Show(l1);
             Console.WriteLine("30 IsListContains:  " + ListInt.IsListContains(l4, l1));     // Expected: True
+        }
+
+        static void TestTripleChain()
+        {
+            // בניית L1 מהדוגמה: 2,5,3,7, 2,5,3,7, 2,5,3,7
+            int[] arr1 = { 2, 5, 3, 7, 2, 5, 3, 7, 2, 5, 3, 7 };
+            Node<int> l1 = new Node<int>(arr1[0]);
+            Node<int> last1 = l1;
+            for (int i = 1; i < arr1.Length; i++)
+            {
+                last1.SetNext(new Node<int>(arr1[i]));
+                last1 = last1.GetNext();
+            }
+
+            // רשימה לבדיקה שאינה משולשת (הספרה 9 שוברת את השליש השלישי)
+            int[] arr2 = { 2, 5, 3, 7, 2, 5, 3, 7, 2, 5, 9, 7 };
+            Node<int> l2 = new Node<int>(arr2[0]);
+            Node<int> last2 = l2;
+            for (int i = 1; i < arr2.Length; i++)
+            {
+                last2.SetNext(new Node<int>(arr2[i]));
+                last2 = last2.GetNext();
+            }
+            Title("Is tripple chain test");
+            Console.WriteLine("Sidra L1: " + ListInt.ToStr(l1));
+            Console.WriteLine("Sidra L2: " + ListInt.ToStr(l2));
+            Console.WriteLine("L1 - way 1: " + IsTripleChain(l1));   // True
+            Console.WriteLine("L1 - way 2: " + IsTripleChain2(l1));  // True
+            Console.WriteLine("L2 - way 1: " + IsTripleChain(l2));   // False
+            Console.WriteLine("L2 - way 2: " + IsTripleChain2(l2));  // False
         }
     }
 }
