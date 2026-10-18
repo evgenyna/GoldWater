@@ -40,21 +40,25 @@ namespace GoldWater
             Node<int> pos3 = GetPos(l, part * 2);   // תחילת השליש השלישי
 
             while (pos3 != null)
-            {                                   // תוקן: היה } במקום {
+            {                                 
                 if (l.GetValue() != pos2.GetValue() ||
                     pos2.GetValue() != pos3.GetValue())
                     return false;
                 l = l.GetNext();
                 pos2 = pos2.GetNext();
                 pos3 = pos3.GetNext();
-            }                                   // תוקן: היה { במקום }
+            }                                  
 
             return true;
-        }                                       // תוקן: היה { במקום }
+        }                                      
 
         // דרך 2:
-        // מצביע אחד שמקדים ב-part חוליות
-        // משווה כל איבר לאיבר שנמצא part מקומות אחריו:
+        // מצביע אחד שמקדים ב
+        // -part חוליות
+        // משווה
+        // כל איבר לאיבר שנמצא
+        // part
+        // מקומות אחריו:
         // כך השליש הראשון מושווה לשני, והשני לשלישי
         public static bool IsTripleChain2(Node<int> l)
         {
@@ -63,16 +67,18 @@ namespace GoldWater
 
             int part = Count(l) / 3;
             Node<int> pos1 = l;
-            for (int i = 0; i < part; i++)      // קידום pos1 לתחילת השליש השני
+            for (int i = 0; i < part; i++)      // קידום
+                                                // pos1
+                                                // לתחילת השליש השני
                 pos1 = pos1.GetNext();
 
             while (pos1 != null)
-            {                                   // תוקן: היה } במקום {
+            {                                   
                 if (l.GetValue() != pos1.GetValue())
                     return false;
                 l = l.GetNext();
                 pos1 = pos1.GetNext();
-            }                                   // תוקן: היה { במקום }
+            }                                   
 
             return true;
         }

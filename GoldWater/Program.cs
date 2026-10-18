@@ -1,21 +1,21 @@
 using System;
 using Unit4.CollectionsLib;
 using System.Text;
-using static GoldWater.ListInt;
-using static GoldWater.ListInt2;
-using static GoldWater.ListSedarot;
-using static GoldWater.ListTriple;
+using ls1 = GoldWater.ListInt;
+using ls2 =  GoldWater.ListInt2;
+using sd =  GoldWater.ListSedarot;
+using lt = GoldWater.ListTriple;
 
 namespace GoldWater
 {
-    internal class Program
+    class Program
     {
         static Random rnd = new Random();
 
         static void Main(string[] args)
         {
-            Node<int> lst = Build(12, 5, 20);
-            Show(lst);
+            Node<int> lst = ls1.Build(12, 5, 20);
+            ls1.Show(lst);
 
             //Ex5_BuildAndShow();
             ExSearchAndUpdate();
@@ -31,15 +31,15 @@ namespace GoldWater
             //ExSequences();
             ExSubLists();
             //Console.ReadLine();
-            Test();
+            ls2.Test();
 
             // בניית הרשימה מהדוגמה: 7, 2, 4, 8, 20, 18, 19, 20, 20, 5, -3, 0, 9
             int[] arr = { 7, 2, 4, 8, 20, 18, 19, 20, 20, 5, -3, 0, 9 };
-            Node<int> list = ListInt.Build(arr);
-            Node<int> result = Sedarot(list);
+            Node<int> list = ls1.Build(arr);
+            Node<int> result = sd.Sedarot(list);
             Title("Sedarot");
-            Console.WriteLine("Sidra: " + ListInt.ToStr(list));
-            Console.WriteLine("Sedarot result: " + ListInt.ToStr(result));
+            Console.WriteLine("Sidra: " + ls1.ToStr(list));
+            Console.WriteLine("Sedarot result: " + ls1 .ToStr(result));
 
             TestTripleChain();
         }
@@ -258,13 +258,13 @@ namespace GoldWater
 
             //Node<int> l3 = ListInt.Build(new int[] { 3, 12, 5, 1, 6, 3, 12, 5, 32, 1, 11, 5 });
             //Console.WriteLine("29 IsIncludedList:  " + ListInt.IsIncludedList(l1, l3));     // Expected: True
-            Console.Write("l1: "); Show(l1);
-            Console.Write("l2: "); Show(l2);
+            Console.Write("l1: "); ls1.Show(l1);
+            Console.Write("l2: "); ls1.Show(l2);
             Console.WriteLine("29 IsIncludedList:  " + ListInt.IsIncludedList(l1, l2));     // Expected: False
 
             Node<int> l4 = ListInt.Build(new int[] { 6, 32, 1, 1, 12, 5, 8, 34, 3, 5, 1 });
-            Console.Write("l4: "); Show(l4);
-            Console.Write("l1: "); Show(l1);
+            Console.Write("l4: "); ls1.Show(l4);
+            Console.Write("l1: "); ls1.Show(l1);
             Console.WriteLine("30 IsListContains:  " + ListInt.IsListContains(l4, l1));     // Expected: True
         }
 
@@ -290,12 +290,12 @@ namespace GoldWater
                 last2 = last2.GetNext();
             }
             Title("Is tripple chain test");
-            Console.WriteLine("Sidra L1: " + ListInt.ToStr(l1));
-            Console.WriteLine("Sidra L2: " + ListInt.ToStr(l2));
-            Console.WriteLine("L1 - way 1: " + IsTripleChain(l1));   // True
-            Console.WriteLine("L1 - way 2: " + IsTripleChain2(l1));  // True
-            Console.WriteLine("L2 - way 1: " + IsTripleChain(l2));   // False
-            Console.WriteLine("L2 - way 2: " + IsTripleChain2(l2));  // False
+            Console.WriteLine("Sidra L1: " + ls1.ToStr(l1));
+            Console.WriteLine("Sidra L2: " + ls1.ToStr(l2));
+            Console.WriteLine("L1 - way 1: " + lt.IsTripleChain(l1));   // True
+            Console.WriteLine("L1 - way 2: " + lt.IsTripleChain2(l1));  // True
+            Console.WriteLine("L2 - way 1: " + lt.IsTripleChain(l2));   // False
+            Console.WriteLine("L2 - way 2: " + lt.IsTripleChain2(l2));  // False
         }
     }
 }

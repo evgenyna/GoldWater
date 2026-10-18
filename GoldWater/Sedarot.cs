@@ -12,7 +12,8 @@ namespace GoldWater
         {
             Node<int> pos = list;   // לסריקה  list אפשר להשתמש
             int sum = 0;
-            Node<int> newN = null, last = null;
+            Node<int> newN = null, 
+                last = null;
 
             while (pos.HasNext())
             {
