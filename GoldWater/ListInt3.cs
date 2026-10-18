@@ -1,11 +1,12 @@
-using System;
+﻿using System;
 using Unit4.CollectionsLib;
 using System.Text;
 
 namespace GoldWater
 {
     /// <summary>
-    /// פתרונות לדף התרגילים רשימה מוכלת ותת רשימה
+    /// פתרונות לדף התרגילים תרגול שרשרת - הילה קדמן - 3 
+    /// רשימה מוכלת ותת רשימה
     /// פעולות העזר נלקחות מהמחלקה של דף תרגול מספר 1
     /// </summary>
     // Helpers used: ListInt.Build, ListInt.ToStr, ListInt.Exist, ListInt.StartsWith
