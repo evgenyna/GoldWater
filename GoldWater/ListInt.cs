@@ -797,7 +797,7 @@ namespace GoldWater
 
         // פעולת עזר
         // האם הרשימה מופיעה ברצף החל מהחוליה הנתונה
-        private static bool StartsWith(Node<int> start, Node<int> lst1)
+        public static bool StartsWith(Node<int> start, Node<int> lst1)
         {
             while (lst1 != null && start != null && lst1.GetValue() == start.GetValue())
             {

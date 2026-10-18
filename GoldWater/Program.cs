@@ -3,6 +3,7 @@ using Unit4.CollectionsLib;
 using System.Text;
 using ls1 = GoldWater.ListInt;
 using ls2 =  GoldWater.ListInt2;
+using ls3 = GoldWater.ListInt3;
 using sd =  GoldWater.ListSedarot;
 using lt = GoldWater.ListTriple;
 
@@ -42,6 +43,7 @@ namespace GoldWater
             Console.WriteLine("Sedarot result: " + ls1 .ToStr(result));
 
             TestTripleChain();
+            ls3.Test();
         }
 
         static void Title(string s)
